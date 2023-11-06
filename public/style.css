@@ -1,0 +1,29 @@
+.add {
+width: 30%;
+margin: 10px;
+padding: 10px;
+border: 1px dashed #cccccc;
+border-radius: 10px;
+box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.add h2 {
+text-align: center;
+color: #999999;
+}
+
+.add button {
+display: block;
+width: 80%;
+margin: 10px auto;
+padding: 10px;
+border-radius: 50%;
+background-color: #0099ff;
+color: white;
+font-size: 24px;
+cursor: pointer;
+}
+
+.add button:hover {
+background-color: #0066cc;
+}
