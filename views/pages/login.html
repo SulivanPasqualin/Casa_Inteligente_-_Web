@@ -1,119 +1,26 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
+
 <head>
-    <!-- <meta http-equiv = "refresh" content = "1"> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <title>Document</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
-<style>
-/* Define o estilo da tela de login */
-.login {
-width: 300px;
-height: 300px;
-margin: 100px auto;
-border: 1px solid black;
-padding: 20px;
-background-color: lightgray;
-}
-
-/* Define o estilo dos campos de entrada */
-.input {
-width: 250px;
-height: 25px;
-margin: 10px 0;
-}
-
-/* Define o estilo do botão de entrar */
-.button {
-width: 100px;
-height: 30px;
-margin: 10px auto;
-background-color: green;
-color: white;
-font-weight: bold;
-}
-
-/* Define o estilo do link para se cadastrar */
-.link {
-display: block;
-text-align: center;
-color: blue;
-text-decoration: none;
-}
-</style>
 </head>
+
 <body>
-<div class="login">
-<h2>Tela de Login</h2>
-<form>
-<input type="text" class="input" name="login" placeholder="Login">
-<input type="password" class="input" name="senha" placeholder="Senha">
-<input type="submit" class="button" value="Entrar">
-</form>
-<a href="#" class="link">Cadastrar-se</a>
-</div>
-
-<!-- Código para solicitar usuário, senha e e-mail ao se cadastrar -->
-<script>
-// Seleciona o link para se cadastrar
-var link = document.querySelector(".link");
-
-// Adiciona um evento de clique ao link
-link.addEventListener("click", function(event) {
-// Previne o comportamento padrão do link
-event.preventDefault();
-
-// Cria um elemento de formulário
-var form = document.createElement("form");
-
-// Cria os elementos de entrada para usuário, senha e e-mail
-var inputUser = document.createElement("input");
-var inputPass = document.createElement("input");
-var inputEmail = document.createElement("input");
-
-// Define os atributos dos elementos de entrada
-inputUser.type = "text";
-inputUser.name = "usuario";
-inputUser.placeholder = "Usuário";
-inputUser.className = "input";
-
-inputPass.type = "password";
-inputPass.name = "senha";
-inputPass.placeholder = "Senha";
-inputPass.className = "input";
-
-inputEmail.type = "email";
-inputEmail.name = "email";
-inputEmail.placeholder = "E-mail";
-inputEmail.className = "input";
-
-// Adiciona os elementos de entrada ao formulário
-form.appendChild(inputUser);
-form.appendChild(inputPass);
-form.appendChild(inputEmail);
-
-// Cria um elemento de botão para enviar o formulário
-var button = document.createElement("input");
-
-// Define os atributos do elemento de botão
-button.type = "submit";
-button.value = "Cadastrar-se";
-button.className = "button";
-
-// Adiciona o elemento de botão ao formulário
-form.appendChild(button);
-
-// Seleciona a div da tela de login
-var login = document.querySelector(".login");
-
-// Limpa o conteúdo da div da tela de login
-login.innerHTML = "";
-
-// Adiciona o formulário à div da tela de login
-login.appendChild(form);
-
-});
-</script>
+    <form>
+        <h2>Login</h2>
+        
+        <label for="username">Nome de Usuário:</label>
+        <input type="text" id="username" name="username" required>
+    
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required>
+    
+        <button type="submit">Entrar</button>
+    </form>
 </body>
+
 </html>
