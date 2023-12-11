@@ -64,6 +64,11 @@ servidor.get("/dispositivos", function(req, res) {
     res.render('pages/dispositivos');
 });
 
+// Rota Início
+servidor.get("/inicio", function(req, res) {
+    res.render('pages/inicio');
+});
+
 // Servidor escutando na porta 3000
 servidor.listen(3000, function() {
     console.log(`Servidor executando...`);
