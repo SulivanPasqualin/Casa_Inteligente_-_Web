@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Início</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        /* Estilos gerais da página */
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Estilos da barra de navegação */
+        .navbar {
+            background-color: #46ACC2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            padding: 10px;
+            position: relative;
+        }
+
+        /* Estilos do título da página */
+        .navbar__title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Estilos do ícone do menu do tipo sanduíche */
+        .navbar__icon {
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Estilos das linhas do ícone do menu do tipo sanduíche */
+        .navbar__icon-line {
+            width: 100%;
+            height: 4px;
+            background-color: white;
+            margin-bottom: 4px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Estilos do menu suspenso */
+        .navbar__menu {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 200px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        /* Estilos dos itens do menu suspenso */
+        .navbar__menu-item {
+            display: block;
+            padding: 15px;
+            color: #333333;
+            text-decoration: none;
+        }
+
+        /* Estilos dos itens do menu suspenso ao passar o mouse */
+        .navbar__menu-item:hover {
+            background-color: #eeeeee;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegação -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <!-- Título da página -->
+        <div class="navbar__title">Página de Início</div>
+        <!-- Ícone do menu do tipo sanduíche -->
+        <div class="navbar__icon">
+            <!-- Linhas do ícone -->
+            <div class="navbar__icon-line"></div>
+            <div class="navbar__icon-line"></div>
+            <div class="navbar__icon-line"></div>
+        </div>
+        <!-- Menu suspenso -->
+        <div class="navbar__menu">
+            <!-- Itens do menu -->
+            <a href="#" class="navbar__menu-item">Link A</a>
+            <a href="#" class="navbar__menu-item">Link B</a>
+            <a href="#" class="navbar__menu-item">Link C</a>
+            <a href="#" class="navbar__menu-item">Link D</a>
+        </div>
+    </nav>
+
+    <!-- Importação da biblioteca jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Script para adicionar a funcionalidade do menu -->
+    <script>
+        // Seleciona o ícone do menu
+        var icon = $(".navbar__icon");
+
+        // Seleciona o menu
+        var menu = $(".navbar__menu");
+
+        // Adiciona um evento de clique ao ícone
+        icon.click(function() {
+            // Alterna a classe "active" no ícone
+            icon.toggleClass("active");
+
+            // Se o ícone tiver a classe "active"
+            if (icon.hasClass("active")) {
+                // Muda a altura máxima do menu para um valor alto
+                menu.css("max-height", "500px");
+
+                // Rotaciona a primeira linha do ícone em 45 graus
+                icon.find(".navbar__icon-line:first-child").css("transform", "rotate(45deg)");
+
+                // Esconde a segunda linha do ícone
+                icon.find(".navbar__icon-line:nth-child(2)").css("opacity", "0");
+
+                // Rotaciona a terceira linha do ícone em -45 graus
+                icon.find(".navbar__icon-line:last-child").css("transform", "rotate(-45deg)");
+            } else {
+                // Muda a altura máxima do menu para zero
+                menu.css("max-height", "0");
+
+                // Desfaz as transformações nas linhas do ícone
+                icon.find(".navbar__icon-line").css("transform", "none");
+
+                // Mostra a segunda linha do ícone
+                icon.find(".navbar__icon-line:nth-child(2)").css("opacity", "1");
+            }
+        });
+    </script>
+</body>
+</html>

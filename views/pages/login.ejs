@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Adicionando o link do Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+
+    <div id="forms-container" class="section">
+        <form id="login-form" class="box">
+            <h2>Login</h2>
+            <div class="field">
+                <label for="login-username" class="label">Nome de Usuário:</label>
+                <input type="text" id="login-username" class="input" required>
+            </div>
+            <div class="field">
+                <label for="login-password" class="label">Senha:</label>
+                <input type="password" id="login-password" class="input" required>
+            </div>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button onclick="showSignupForm()" class="button is-info">Cadastrar Conta</button>
+                </div>
+                <div class="control">
+                    <button type="submit" class="button is-primary">Entrar</button>
+                </div>
+            </div>
+        </form>
+
+        <form id="signup-form" class="box" style="display: none;">
+            <!-- ... (código de cadastro) -->
+        </form>
+
+        <form id="new-signup-form" class="box" style="display: none;">
+            <!-- ... (outro código de cadastro) -->
+        </form>
+    </div>
+
+    <script>
+        function showSignupForm() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('signup-form').style.display = 'block';
+            document.getElementById('new-signup-form').style.display = 'none';
+        }
+
+        function checkPasswords() {
+            // ... (código de verificação de senha)
+        }
+
+        function checkLogin(event) {
+            event.preventDefault(); // Evita o comportamento padrão de envio do formulário
+
+            var email = document.getElementById('login-username').value;
+            var password = document.getElementById('login-password').value;
+
+            // Verifica as credenciais inseridas
+            if (email === 'sulivan@live.com' && password === '123') {
+                // Redireciona para a página principal "comodos"
+                window.location.href = '/comodos';
+            } else {
+                alert('Credenciais inválidas. Tente novamente.');
+            }
+        }
+
+        // Adiciona o evento de submissão ao formulário de login
+        document.getElementById('login-form').addEventListener('submit', checkLogin);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Dispositivos Inteligentes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        .device-list {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .device-button {
+            flex-grow: 1;
+            text-align: center;
+            margin: 0 5px;
+        }
+
+        .controls-form {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Dispositivos e suas funções:</h1>
+
+            <div class="device-list">
+                <button class="button is-primary device-button" onclick="showControls('TV')">TV</button>
+                <button class="button is-primary device-button" onclick="showControls('Radio')">Rádio</button>
+                <button class="button is-primary device-button" onclick="showControls('Lampada')">Lâmpada</button>
+                <button class="button is-primary device-button" onclick="showControls('Ventilador')">Ventilador</button>
+                <button class="button is-primary device-button" onclick="showControls('PortaoEletronico')">Portão Eletrônico</button>
+                <button class="button is-primary device-button" onclick="showControls('ArCondicionado')">Ar Condicionado</button>
+            </div>
+
+            <form id="controls-TV" class="controls-form">
+                <h3 class="title is-4">Controle de TV</h3>
+                <button class="button is-primary" onclick="ligaTV()">Ligar</button>
+                <button class="button is-danger" onclick="desligaTV()">Desligar</button>
+		<button class="button is-info" onclick="volumeUp()">Volume +</button>
+		<button class="button is-info" onclick="volumeDown()">Volume -</button>
+		<button class="button is-info" onclick="canalUp()">Canal +</button>
+		<button class="button is-info" onclick="canalDown()">Canal -</button>
+		<button class="button is-info" onclick="volumeMudo()">Mudo</button>
+            </form>
+
+            <form id="controls-Radio" class="controls-form">
+                <h3 class="title is-4">Controle de Rádio</h3>
+                <button class="button is-primary" onclick="ligaRadio()">Ligar</button>
+                <button class="button is-danger" onclick="desligaRadio()">Desligar</button>
+		<button class="button is-info" onclick="volumeUp()">Volume +</button>
+		<button class="button is-info" onclick="volumeDown()">Volume -</button>
+		<button class="button is-info" onclick="proximaMusica()">>>|</button>
+		<button class="button is-info" onclick="anteriorMusica()">|<<</button>
+		<button class="button is-info" onclick="play_pauseMusic()">Play/Pause</button>
+            </form>
+
+            <form id="controls-Lampada" class="controls-form">
+                <h3 class="title is-4">Controle de Lâmpada</h3>
+                <button class="button is-primary" onclick="ligaLampada()">Ligar</button>
+		<button class="button is-danger" onclick="desligaLampada()">Desliga</button>
+                <button class="button is-info" onclick="brilhoUp()">Brilho +</button>
+                <button class="button is-info" onclick="brilhoDown()">Brilho -</button>
+            </form>
+
+		
+            <!-- Adicione os forms para os demais dispositivos -->
+
+        </div>
+    </section>
+
+    <script>
+        function showControls(device) {
+            const controlsForms = document.querySelectorAll('.controls-form');
+            controlsForms.forEach(form => form.style.display = 'none');
+
+            const deviceForm = document.getElementById(`controls-${device}`);
+            deviceForm.style.display = 'block';
+        }
+
+        // Implemente as funções de controle para cada dispositivo
+        function ligaTV() {
+            // Lógica para ligar a TV
+        }
+
+        function desligaTV() {
+            // Lógica para desligar a TV
+        }
+
+        // Implemente as funções de controle para os demais dispositivos
+
+    </script>
+</body>
+
+</html>

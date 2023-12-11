@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cômodos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <style>
+        .device-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .device-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Cadastro de Cômodos</h1>
+
+            <form id="room-form" class="box">
+                <div class="field">
+                    <label for="room-name" class="label">Nome do Cômodo:</label>
+                    <div class="control">
+                        <input type="text" id="room-name" class="input" placeholder="Digite o nome do cômodo" required oninput="clearDevicesSelection()">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Dispositivos Inteligentes:</label>
+                    <div class="control device-list">
+                        <div class="device-option">
+                            <input type="checkbox" value="lampada">
+                            <label class="checkbox">Lâmpada</label>
+                        </div>
+                        <div class="device-option">
+                            <input type="checkbox" value="ventilador">
+                            <label class="checkbox">Ventilador</label>
+                        </div>
+                        <div class="device-option">
+                            <input type="checkbox" value="tv">
+                            <label class="checkbox">TV</label>
+                        </div>
+                        <div class="device-option">
+                            <input type="checkbox" value="portao-eletronico">
+                            <label class="checkbox">Portão Eletrônico</label>
+                        </div>
+                        <div class="device-option">
+                            <input type="checkbox" value="radio">
+                            <label class="checkbox">Rádio</label>
+                        </div>
+                        <div class="device-option">
+                            <input type="checkbox" value="ar-condicionado">
+                            <label class="checkbox">Ar Condicionado</label>
+                        </div>
+                        <!-- Mais dispositivos -->
+                    </div>
+                </div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button type="button" onclick="addRoom()" class="button is-primary">Adicionar</button>
+                        <button type="button" onclick="editRoom()" class="button is-warning" style="display: none;">Buscar para Edição</button>
+                        <button type="button" onclick="deleteRoom()" class="button is-danger" style="display: none;">Excluir</button>
+                        <button type="button" onclick="saveChanges()" class="button is-success" style="display: none;">Salvar Alterações</button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="room-list" class="mt-4">
+                <h2 class="subtitle">Cômodos Cadastrados:</h2>
+                <ul id="room-list-display"></ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let currentRoomId = null;
+
+        const rooms = [
+            { id: 1, name: 'Sala de Estar', devices: ['lampada', 'ventilador'] },
+            { id: 2, name: 'Quarto Principal', devices: ['tv', 'radio'] },
+            // Adicione mais cômodos conforme necessário
+        ];
+
+        function displayRooms() {
+            const roomListDisplay = document.getElementById('room-list-display');
+            roomListDisplay.innerHTML = '';
+            rooms.forEach(room => {
+                const listItem = document.createElement('li');
+                listItem.textContent = room.name;
+                listItem.onclick = () => selectRoom(room.id);
+                roomListDisplay.appendChild(listItem);
+            });
+        }
+
+        function selectRoom(roomId) {
+            currentRoomId = roomId;
+            const selectedRoom = rooms.find(room => room.id === roomId);
+            document.getElementById('room-name').value = selectedRoom.name;
+            const devices = Array.from(document.querySelectorAll('#room-form [type="checkbox"]'));
+            devices.forEach(device => {
+                device.checked = selectedRoom.devices.includes(device.value);
+            });
+
+            toggleButtons(true);
+        }
+
+        function addRoom() {
+            const roomName = document.getElementById('room-name').value;
+            const devices = Array.from(document.querySelectorAll('#room-form [type="checkbox"]'))
+                .filter(device => device.checked)
+                .map(device => device.value);
+
+            if (roomName && devices.length > 0) {
+                const newRoom = {
+                    id: rooms.length + 1,
+                    name: roomName,
+                    devices: devices
+                };
+                rooms.push(newRoom);
+                displayRooms();
+                clearForm();
+                toggleButtons(false);
+            } else {
+                alert('Por favor, preencha o nome do cômodo e selecione pelo menos um dispositivo.');
+            }
+        }
+
+        function deleteRoom() {
+            if (currentRoomId) {
+                const roomIndex = rooms.findIndex(room => room.id === currentRoomId);
+                if (roomIndex !== -1) {
+                    rooms.splice(roomIndex, 1);
+                    displayRooms();
+                    clearForm();
+                    currentRoomId = null;
+                }
+            } else {
+                alert('Selecione um cômodo para excluir.');
+            }
+        }
+
+        function saveChanges() {
+            if (currentRoomId) {
+                const roomName = document.getElementById('room-name').value;
+                const devices = Array.from(document.querySelectorAll('#room-form [type="checkbox"]'))
+                    .filter(device => device.checked)
+                    .map(device => device.value);
+
+                const roomIndex = rooms.findIndex(room => room.id === currentRoomId);
+                if (roomIndex !== -1) {
+                    rooms[roomIndex].name = roomName;
+                    rooms[roomIndex].devices = devices;
+                    displayRooms();
+                    clearForm();
+                    currentRoomId = null;
+                    toggleButtons(false);
+                }
+            } else {
+                alert('Selecione um cômodo para editar.');
+            }
+        }
+
+        function clearForm() {
+            document.getElementById('room-name').value = '';
+            const devices = document.querySelectorAll('#room-form [type="checkbox"]');
+            devices.forEach(device => {
+                device.checked = false;
+            });
+        }
+
+        function toggleButtons(editMode) {
+            document.querySelector('.is-success').style.display = editMode ? 'block' : 'none';
+            document.querySelector('.is-warning').style.display = editMode ? 'none' : 'block';
+            document.querySelector('.is-danger').style.display = editMode ? 'none' : 'block';
+            document.querySelector('.is-primary').style.display = editMode ? 'none' : 'block';
+        }
+
+        function clearDevicesSelection() {
+            const devices = document.querySelectorAll('#room-form [type="checkbox"]');
+            devices.forEach(device => {
+                device.checked = false;
+            });
+        }
+
+        // Exibir cômodos ao carregar a página
+        displayRooms();
+    </script>
+
+</body>
+</html>

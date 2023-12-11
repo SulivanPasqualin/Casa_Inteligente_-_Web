@@ -1,29 +1,76 @@
-.add {
-width: 30%;
-margin: 10px;
-padding: 10px;
-border: 1px dashed #cccccc;
-border-radius: 10px;
-box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
+#forms-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Isso ajuda a centralizar verticalmente */
 }
 
-.add h2 {
-text-align: center;
-color: #999999;
+ /* Estilos gerais da página */
+ body {
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
 }
 
-.add button {
-display: block;
-width: 80%;
-margin: 10px auto;
-padding: 10px;
-border-radius: 50%;
-background-color: #0099ff;
-color: white;
-font-size: 24px;
-cursor: pointer;
+/* Estilos da barra de navegação */
+.navbar {
+    background-color: #46ACC2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 10px;
+    position: relative;
 }
 
-.add button:hover {
-background-color: #0066cc;
+/* Estilos do título da página */
+.navbar__title {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Estilos do ícone do menu do tipo sanduíche */
+.navbar__icon {
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Estilos das linhas do ícone do menu do tipo sanduíche */
+.navbar__icon-line {
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    margin-bottom: 4px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Estilos do menu suspenso */
+.navbar__menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+}
+
+/* Estilos dos itens do menu suspenso */
+.navbar__menu-item {
+    display: block;
+    padding: 15px;
+    color: #333333;
+    text-decoration: none;
+}
+
+/* Estilos dos itens do menu suspenso ao passar o mouse */
+.navbar__menu-item:hover {
+    background-color: #eeeeee;
 }
