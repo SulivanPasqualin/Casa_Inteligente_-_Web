@@ -28,7 +28,7 @@ Execute npm install para instalar as dependências.
 ###Configuração:
 Configure as variáveis de ambiente necessárias.
 
-###Execução:
+##E#xecução:
 Inicie o servidor com node server.js.
 
 
