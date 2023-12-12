@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="PT-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <!-- Adicionando o link do Bulma -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+<%- include("../layout/header")%>
 
-<body>
+<%- include("../layout/menu") %>
+
 
     <div id="forms-container" class="section">
         <form id="login-form" class="box">
@@ -72,6 +64,4 @@
         document.getElementById('login-form').addEventListener('submit', checkLogin);
     </script>
 
-</body>
-
-</html>
+<%- include("../layout/footer") %>

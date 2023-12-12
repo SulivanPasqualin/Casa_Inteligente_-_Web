@@ -74,3 +74,34 @@
 .navbar__menu-item:hover {
     background-color: #eeeeee;
 }
+
+/* Estilos para a barra de navegação */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+  }
+  
+  /* Estilos para os itens da barra de navegação */
+  .navbar-item {
+    margin-right: 10px;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  /* Estilos para os itens do dropdown */
+  .navbar-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 150px;
+    z-index: 1;
+  }
+  
+  .navbar-item.has-dropdown:hover .navbar-dropdown {
+    display: block;
+  }
+  

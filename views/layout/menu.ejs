@@ -1,28 +1,61 @@
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Início</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+</head>
+
+
 <nav class="navbar is-black">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">Início</a>
-    <% if (user && user.role === 'user') { %>
-      <a class="navbar-item" href="/pedidos/<%= user.id %>">Pedidos</a>
+      <a class="navbar-item" href="/pedidos/">Pedidos</a>
       <a class="navbar-item" href="/produtos">Produtos</a>
-    <% } else if (user && user.role === 'admin') { %>
-      <a class="navbar-item" href="/pedidos">Pedidos</a>
-      <a class="navbar-item" href="/produtos">Produtos</a>
-    <a class="navbar-item" href="/pessoas">Pessoas</a>
-    <% } %>
+
+    
   </div>
   <div class="navbar-brand" style="margin-left: auto;">
-    <% if (user) { %>
+    
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">Bem-vindo, <%= user.nome %></a>
+        <a class="navbar-link">Bem-vindo</a>
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="/pessoas/<%= user.id %>">Meu perfil</a>
+          <a class="navbar-item" href="/pessoas/">Meu perfil</a>
           <a class="navbar-item" href="/logout">Logout</a>
         </div>
       </div>
-    <% } else { %>
+    
       <a class="navbar-item" href="/pessoas/novo">Cadastrar Usuário</a>
       <a class="navbar-item" href="/form-login">Login</a>
-    <% } %>
+    
   </div>
 </nav>
 
+
+ <!-- <nav class="navbar is-black">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">Início</a>
+    <a class="navbar-item" href="/pedidos/">Pedidos</a>
+    <a class="navbar-item" href="/produtos">Produtos</a>
+    <a class="navbar-item" href="/pessoas">Pessoas</a>
+  </div>
+
+  <div class="navbar-brand navbar-end">
+    <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link">Bem-vindo</a>
+      <div class="navbar-dropdown">
+        <a class="navbar-item" href="/pessoas/">Meu perfil</a>
+        <a class="navbar-item" href="/logout">Logout</a>
+      </div>
+    </div>
+    <a class="navbar-item" href="/pessoas/novo">Cadastrar Usuário</a>
+    <a class="navbar-item" href="/form-login">Login</a>
+  </div>
+</nav> -->

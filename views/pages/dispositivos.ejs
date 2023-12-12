@@ -1,32 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<%- include("../layout/header")%>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controle de Dispositivos Inteligentes</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <style>
-        .device-list {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
-        }
+<%- include("../layout/menu") %>
 
-        .device-button {
-            flex-grow: 1;
-            text-align: center;
-            margin: 0 5px;
-        }
 
-        .controls-form {
-            display: none;
-            margin-top: 20px;
-        }
-    </style>
-</head>
 
-<body>
+
     <section class="section">
         <div class="container">
             <h1 class="title">Dispositivos e suas funções:</h1>
@@ -97,6 +75,4 @@
         // Implemente as funções de controle para os demais dispositivos
 
     </script>
-</body>
-
-</html>
+<%- include("../layout/footer") %>

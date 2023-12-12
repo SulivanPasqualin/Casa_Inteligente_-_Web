@@ -1,26 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Cômodos</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <style>
-        .device-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+<%- include("../layout/header")%>
 
-        .device-option {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-    </style>
-</head>
-<body>
+<%- include("../layout/menu") %>
 
     <section class="section">
         <div class="container">
@@ -61,7 +41,6 @@
                             <input type="checkbox" value="ar-condicionado">
                             <label class="checkbox">Ar Condicionado</label>
                         </div>
-                        <!-- Mais dispositivos -->
                     </div>
                 </div>
 
@@ -196,5 +175,4 @@
         displayRooms();
     </script>
 
-</body>
-</html>
+<%- include("../layout/footer") %>

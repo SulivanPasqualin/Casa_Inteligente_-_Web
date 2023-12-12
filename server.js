@@ -29,6 +29,8 @@
 //     console.log(`Servidor executando...`)
 // })
 
+
+
 const express = require("express");
 const servidor = express();
 const path = require('path');
@@ -45,28 +47,28 @@ servidor.get("/login", function(req, res) {
 });
 
 // Rota Home
-servidor.get("/home", function(req, res) {
-    res.render('pages/home');
+servidor.get("/", function(req, res) {
+    res.status(200).render('pages/home')
 });
 
 // Rota comodos
 servidor.get("/comodos", function(req, res) {
-    res.render('pages/comodos');
+    res.status(200).render('pages/comodos');
 });
 
 // Rota locais
 servidor.get("/locais", function(req, res) {
-    res.render('pages/locais');
+    res.status(200).render('pages/locais');
 });
 
 // Rota Dispositivos
 servidor.get("/dispositivos", function(req, res) {
-    res.render('pages/dispositivos');
+    res.status(200).render('pages/dispositivos');
 });
 
 // Rota Início
 servidor.get("/inicio", function(req, res) {
-    res.render('pages/inicio');
+    res.status(200).render('pages/inicio');
 });
 
 // Servidor escutando na porta 3000
